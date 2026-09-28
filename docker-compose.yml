@@ -1,0 +1,12 @@
+# Local test of the production image: docker compose up --build → http://localhost:3000
+# (Dokploy only needs the Dockerfile; this file is optional.)
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: http://localhost:3000
+    image: sparta-cafe:latest
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
